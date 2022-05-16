@@ -23,4 +23,19 @@ const Status = styled.div`
   font-size: 1.2rem;
 `;
 
-export { Wrapper, Status };
+const Button = styled.button`
+  background: var(--color-gray-light);
+  border: none;
+  border-radius: 4px;
+  color: var(--color-white);
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  &:hover {
+    background: var(--color-gray-dark);
+  }
+`;
+
+export { Wrapper, Status, Button };

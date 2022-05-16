@@ -1,5 +1,5 @@
 import Card from "../Card/Card";
-import { Wrapper, Status } from "./Game.styled";
+import { Wrapper, Status, Button } from "./Game.styled";
 import { createMemoryGameMachine, GameCard } from "./../../gameMachine";
 import { useMachine } from "@xstate/react";
 import { useCallback } from "react";
@@ -28,6 +28,8 @@ const Game = () => {
           return <Card key={index} emoji={emoji} selectCard={selectCard} />;
         })}
       </Wrapper>
+
+      <Button onClick={() => send("RESET")}>Reset</Button>
     </div>
   );
 };

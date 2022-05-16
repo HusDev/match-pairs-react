@@ -16,13 +16,13 @@ export type GameContext = {
 };
 
 const emojis = [
-  { type: 1, content: "😀", collected: false, flip: false },
-  { type: 2, content: "😂", collected: false, flip: false },
-  { type: 3, content: "😍", collected: false, flip: false },
-  { type: 4, content: "😭", collected: false, flip: false },
-  { type: 5, content: "😱", collected: false, flip: false },
-  { type: 6, content: "😎", collected: false, flip: false },
-  { type: 7, content: "😈", collected: false, flip: false },
+  { type: 1, content: "😀", collected: true, flip: true },
+  { type: 2, content: "😂", collected: true, flip: true },
+  { type: 3, content: "😍", collected: true, flip: true },
+  { type: 4, content: "😭", collected: true, flip: true },
+  { type: 5, content: "😱", collected: true, flip: true },
+  { type: 6, content: "😎", collected: true, flip: true },
+  { type: 7, content: "😈", collected: true, flip: true },
   { type: 8, content: "😏", collected: false, flip: false },
 ];
 
@@ -87,7 +87,22 @@ export const createMemoryGameMachine = () =>
           },
         },
         finished: {
-          type: "final",
+          on: {
+            RESET: "reset",
+          },
+        },
+        reset: {
+          entry: assign((context) => {
+            context.cards.forEach((c) => {
+              c.collected = false;
+              c.flip = false;
+            });
+            context.pairs = [];
+            context.firstSelected = undefined;
+            context.secondSelected = undefined;
+            context.totalMoves = 0;
+            return context;
+          }),
         },
       },
     },
