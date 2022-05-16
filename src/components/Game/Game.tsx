@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Card } from "../Card/Card";
 import { Wrapper } from "./Game.styled";
 import { createMemoryGameMachine, GameCard } from "./../../gameMachine";
@@ -14,11 +13,8 @@ const Game = () => {
     send("SELECT", { index });
   };
 
-  const [cards, setCards] = useState<GameCard[]>([]);
+  const cards = state.context.cards;
 
-  useEffect(() => {
-    setCards(state.context.cards);
-  }, [state.context.cards]);
   return (
     <>
       <Wrapper>
