@@ -24,7 +24,10 @@ const emojis = [
   { type: 7, content: "😈", collected: false, flip: false },
   { type: 8, content: "😏", collected: false, flip: false },
 ];
-const shuffleCards: GameCard[] = [...emojis, ...emojis].sort(
+
+const emojis2 = JSON.parse(JSON.stringify(emojis));
+
+const shuffleCards: GameCard[] = [...emojis, ...emojis2].sort(
   () => Math.random() - 0.5
 );
 
@@ -91,9 +94,11 @@ export const createMemoryGameMachine = () =>
         compareSelections: assign((context) => {
           const { firstSelected, secondSelected } = context;
           if (firstSelected!.type === secondSelected!.type) {
-            context.pairs.push(firstSelected!, secondSelected!);
             firstSelected!.collected = true;
             secondSelected!.collected = true;
+          } else {
+            firstSelected!.flip = false;
+            secondSelected!.flip = false;
           }
           context.firstSelected = context.secondSelected = undefined;
           return context;
