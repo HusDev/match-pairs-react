@@ -13,6 +13,7 @@ export type GameContext = {
   firstSelected?: GameCard | undefined;
   secondSelected?: GameCard | undefined;
   totalMoves: number;
+  finished: boolean;
 };
 
 const emojis = [
@@ -38,6 +39,7 @@ const initialContext = {
   firstSelected: undefined,
   secondSelected: undefined,
   totalMoves: 0,
+  finished: false,
 };
 
 const isFinished = (c: GameContext) => c.cards.every((c) => c.collected);
@@ -87,6 +89,7 @@ export const createMemoryGameMachine = () =>
           },
         },
         finished: {
+          entry: assign({ finished: true }),
           on: {
             RESET: "reset",
           },
@@ -101,6 +104,7 @@ export const createMemoryGameMachine = () =>
             context.firstSelected = undefined;
             context.secondSelected = undefined;
             context.totalMoves = 0;
+            context.finished = false;
             return context;
           }),
         },

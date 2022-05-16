@@ -3,6 +3,7 @@ import { Wrapper, Status, Button } from "./Game.styled";
 import { createMemoryGameMachine, GameCard } from "./../../gameMachine";
 import { useMachine } from "@xstate/react";
 import { useCallback } from "react";
+import Confetti from "react-confetti";
 
 const gameMachine = createMemoryGameMachine();
 
@@ -18,10 +19,11 @@ const Game = () => {
 
   return (
     <div>
-      <h1>Match and Pair Game</h1>
+      <h1>Match Pairs Game 🔥</h1>
       <Status>
         <p>Pairs matched: {state.context.pairs.length / 2}/8</p>
         <p>Total Moves: {state.context.totalMoves}</p>
+        {state.context.finished ? <Confetti /> : null}
       </Status>
       <Wrapper>
         {cards.map((emoji, index) => {
