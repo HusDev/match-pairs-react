@@ -12,6 +12,7 @@ export type GameContext = {
   pairs: GameCard[];
   firstSelected?: GameCard | undefined;
   secondSelected?: GameCard | undefined;
+  totalMoves: number;
 };
 
 const emojis = [
@@ -36,6 +37,7 @@ const initialContext = {
   pairs: [],
   firstSelected: undefined,
   secondSelected: undefined,
+  totalMoves: 0,
 };
 
 const isFinished = (c: GameContext) => c.cards.every((c) => c.collected);
@@ -92,10 +94,12 @@ export const createMemoryGameMachine = () =>
     {
       actions: {
         compareSelections: assign((context) => {
+          context.totalMoves = context.totalMoves + 1;
           const { firstSelected, secondSelected } = context;
           if (firstSelected!.type === secondSelected!.type) {
             firstSelected!.collected = true;
             secondSelected!.collected = true;
+            context.pairs.push(firstSelected!, secondSelected!);
           } else {
             firstSelected!.flip = false;
             secondSelected!.flip = false;

@@ -11,9 +11,16 @@ const Wrapper = styled.div`
   padding: 1rem;
   height: 500px;
   border: 1px solid var(--color-gray-light);
-  position: absolute;
   margin: 0 auto;
   border-radius: 4px;
 `;
 
-export { Wrapper };
+const Status = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+`;
+
+export { Wrapper, Status };

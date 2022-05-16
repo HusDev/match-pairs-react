@@ -2,6 +2,7 @@ import { CardStyle, CardWrapper } from "./Card.styled";
 import { useSpring } from "react-spring";
 import { GameCard } from "../../gameMachine";
 import Logo from "./../../assets/img/logo.png";
+import { memo } from "react";
 
 interface CardProps {
   emoji: GameCard;
@@ -43,4 +44,4 @@ const Card = ({ emoji, selectCard }: CardProps) => {
   );
 };
 
-export { Card };
+export default memo(Card);
