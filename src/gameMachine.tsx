@@ -1,4 +1,8 @@
 import { assign, createMachine } from "xstate";
+// Too heavy I won't use it in real world project
+import emoji from "emoji.json/emoji-compact.json";
+
+console.log(emoji[1000]);
 
 export type GameCard = {
   type: number;
@@ -16,15 +20,20 @@ export type GameContext = {
   finished: boolean;
 };
 
+const getEmoji = () => {
+  console.log(Math.floor(Math.random() * 10) + 1);
+  return emoji[Math.floor(Math.random() * 2000) + 1];
+};
+
 const emojis = [
-  { type: 1, content: "😀", collected: true, flip: true },
-  { type: 2, content: "😂", collected: true, flip: true },
-  { type: 3, content: "😍", collected: true, flip: true },
-  { type: 4, content: "😭", collected: true, flip: true },
-  { type: 5, content: "😱", collected: true, flip: true },
-  { type: 6, content: "😎", collected: true, flip: true },
-  { type: 7, content: "😈", collected: true, flip: true },
-  { type: 8, content: "😏", collected: false, flip: false },
+  { type: 1, content: getEmoji(), collected: false, flip: false },
+  { type: 2, content: getEmoji(), collected: false, flip: false },
+  { type: 3, content: getEmoji(), collected: false, flip: false },
+  { type: 4, content: getEmoji(), collected: false, flip: false },
+  { type: 5, content: getEmoji(), collected: false, flip: false },
+  { type: 6, content: getEmoji(), collected: false, flip: false },
+  { type: 7, content: getEmoji(), collected: false, flip: false },
+  { type: 8, content: getEmoji(), collected: false, flip: false },
 ];
 
 const emojis2 = JSON.parse(JSON.stringify(emojis));
