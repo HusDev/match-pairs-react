@@ -15,12 +15,12 @@ export type GameContext = {
 };
 
 const emojis = [
-  { type: 1, content: "😀", collected: false, flip: true },
-  { type: 2, content: "😂", collected: false, flip: true },
-  { type: 3, content: "😍", collected: false, flip: true },
-  { type: 4, content: "😭", collected: false, flip: true },
-  { type: 5, content: "😱", collected: false, flip: true },
-  { type: 6, content: "😎", collected: false, flip: true },
+  { type: 1, content: "😀", collected: false, flip: false },
+  { type: 2, content: "😂", collected: false, flip: false },
+  { type: 3, content: "😍", collected: false, flip: false },
+  { type: 4, content: "😭", collected: false, flip: false },
+  { type: 5, content: "😱", collected: false, flip: false },
+  { type: 6, content: "😎", collected: false, flip: false },
   { type: 7, content: "😈", collected: false, flip: false },
   { type: 8, content: "😏", collected: false, flip: false },
 ];

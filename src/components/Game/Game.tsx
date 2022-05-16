@@ -15,8 +15,6 @@ const Game = () => {
 
   const cards = state.context.cards;
 
-  console.log(state.context);
-
   return (
     <>
       <Wrapper>
